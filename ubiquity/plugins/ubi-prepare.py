@@ -488,8 +488,7 @@ class Page(plugin.Plugin):
         if 'efi' in subarch:
             if is_secure_boot():
                 self.ui.set_using_secureboot(True)
-        if misc.has_bitlocker_partition():
-            self.check_bitlocker_and_space()
+        self.check_bitlocker_and_space()
 
         self.ui.download_updates = self.db.get('ubiquity/download_updates') == 'true'
         if self.ui.download_updates_enabled:
